@@ -89,16 +89,34 @@ training_rate = 3.0
 #weight_2 = np.random.randn(hidden_neuron_count, output_neuron_count)
 #bias_2 = np.random.randn(output_neuron_count)
 
-# weight_1 = np.zeros((input_neuron_count, hidden_neuron_count), dtype=np.float64).transpose()
-# weight_2 = np.zeros((hidden_neuron_count, output_neuron_count), dtype=np.float64).transpose()
-# bias_1 = np.zeros((1, hidden_neuron_count), dtype=np.float64).transpose()
-# bias_2 = np.zeros((1, output_neuron_count), dtype=np.float64).transpose()
+################################################################################
+#
+#  wtf is here:
+#
+#  changing between 1 and 2 shouldn't change anything -- but it does!
+#
+################################################################################
+
+# 1
 
 weight_1 = np.zeros((hidden_neuron_count, input_neuron_count))
 weight_2 = np.zeros((output_neuron_count, hidden_neuron_count))
 bias_1 = np.zeros((hidden_neuron_count, 1))
 bias_2 = np.zeros((output_neuron_count, 1))
 
+# 2
+
+# weight_1 = np.zeros((input_neuron_count, hidden_neuron_count)).transpose()
+# weight_2 = np.zeros((hidden_neuron_count, output_neuron_count)).transpose()
+# bias_1 = np.zeros((1, hidden_neuron_count)).transpose()
+# bias_2 = np.zeros((1, output_neuron_count)).transpose()
+
+################################################################################
+
+print("weight_1.shape:", weight_1.shape)
+print("weight_2.shape:", weight_2.shape)
+print("bias_1.shape:", bias_1.shape)
+print("bias_2.shape:", bias_2.shape)
 
 def estimate_quality(input, output):
     weighted_input_hidden_layer = np.dot(weight_1, input) + bias_1
@@ -186,16 +204,16 @@ for i in range(0, epoch_count):
         k += 1
 
         if k % 1000 == 0:
-            print("weight_1")
-            print(weight_1)
-            print("weight_2")
-            print(weight_2)
+            # print("weight_1")
+            # print(weight_1)
+            # print("weight_2")
+            # print(weight_2)
             print("bias_1")
             print(bias_1)
             print("bias_2")
             print(bias_2)
             print("--- k:", k)
-            aaa = 10
+            sys.exit()
 
     estimate_quality(test_input, test_output)
 
