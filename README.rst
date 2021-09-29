@@ -11,6 +11,11 @@
 
 	weight_1 = np.zeros((hidden_neuron_count, input_neuron_count))
 
+	# test tabs
+		# test tabs
+			# test tabs
+		
+	
 и
 
 .. code:: python
